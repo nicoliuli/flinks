@@ -16,7 +16,7 @@ public class WordCountDemo {
     public static void main(String[] args) throws Exception {
 
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-
+        env.setParallelism(8);
         testWordCount1(env);
         env.execute("Flink Streaming Java API Skeleton");
     }
@@ -38,7 +38,7 @@ public class WordCountDemo {
                 t.setField((Integer) t1.getField(1) + (Integer) t2.getField(1), 1);
                 return t;
             }
-        }).setParallelism(1).print();
+        }).print();
 
     }
 
@@ -65,6 +65,6 @@ public class WordCountDemo {
                 t.f1 = t1.f1 + t2.f1;
                 return t;
             }
-        }).setParallelism(1).print();
+        }).print();
     }
 }

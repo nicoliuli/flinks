@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/StreamingJob.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wb/StreamingJob$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wb/StreamingJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wb/StreamingJob.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day01/WordCountDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day01/WordCountDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wb/StreamingJob.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wb/day01/WordCountDemo.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +54,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.wb.day01" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -121,7 +130,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
