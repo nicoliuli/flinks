@@ -15,7 +15,7 @@ import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction;
 import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;
-import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
+import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
@@ -112,14 +112,23 @@ class CountAgg implements AggregateFunction<UserAction, Long, Long> {
 
 // 自定义窗口输出。用于输出结果的窗口WindowFunction<输入，输出，键，窗口>
 // WindowFunction输入是CountAgg的输出
-class WindowResultFunction implements WindowFunction<Long, ItemBuyCount, Tuple, TimeWindow> {
+class WindowResultFunction extends ProcessWindowFunction<Long, ItemBuyCount, Tuple, TimeWindow> {
 
+    /* 这个是旧版本的，implements WindowFunction
     @Override
     public void apply(Tuple key, TimeWindow window, Iterable<Long> iterable, Collector<ItemBuyCount> collector) throws Exception {
         Long itemId = ((Tuple1<Long>) key).f0;
         Long count = iterable.iterator().next();
         collector.collect(ItemBuyCount.of(itemId, window.getEnd(), count));
 
+    }*/
+
+    // iterable会将ItemBuyCount缓存在iterable中，iterable会缓存整个窗口时间内的所有数据
+    @Override
+    public void process(Tuple key, Context context, Iterable<Long> iterable, Collector<ItemBuyCount> collector) throws Exception {
+        Long itemId = ((Tuple1<Long>) key).f0;
+        Long count = iterable.iterator().next();
+        collector.collect(ItemBuyCount.of(itemId, context.window().getEnd(), count));  // 输出到下一个算子
     }
 }
 
