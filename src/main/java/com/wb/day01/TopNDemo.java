@@ -47,9 +47,9 @@ public class TopNDemo {
                 .filter(value -> value.getBehavior().contains("buy"))// 过滤出购买的行为
                 .keyBy("itemId") // 根据商品id聚合
                 .timeWindow(Time.minutes(60L), Time.minutes(5L))
-                .aggregate(new CountAgg(), new WindowResultFunction())
-                .keyBy("windowEnd")
-                .process(new TopNHotItems(3))
+                .aggregate(new CountAgg(), new WindowResultFunction()) // 1、积攒了分组后的，当前窗口的所有数据
+                .keyBy("windowEnd")                            // 2、然后分组
+                .process(new TopNHotItems(3))                   // 3、整个窗口的数据收集齐，然后排序得出前三名
                 .print();
 
         env.execute("Flink Streaming Java API Skeleton");
@@ -181,7 +181,7 @@ class TopNHotItems extends KeyedProcessFunction<Tuple, ItemBuyCount, List<ItemBu
         context.timerService().registerEventTimeTimer(input.windowEnd + 1);
     }
 
-
+     // 当时间窗口到了，触发这个操作
     @Override
     public void onTimer(long timestamp, OnTimerContext ctx, Collector<List<ItemBuyCount>> out) throws Exception {
         //获取收集到的所有商品点击量
