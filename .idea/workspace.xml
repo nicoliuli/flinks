@@ -71,7 +71,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SinkEsDemo">
+  <component name="RunManager" selected="Application.SinkMysqlDemo">
     <configuration name="OperatorDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day01.OperatorDemo" />
@@ -100,9 +100,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SinkRedisDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="SinkMysqlDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day02.SinkRedisDemo" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day02.SinkMysqlDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
@@ -114,13 +114,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StreamingJob" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="SinkRedisDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.StreamingJob" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day02.SinkRedisDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.*" />
+          <option name="PATTERN" value="com.wb.day02.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,19 +143,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.StreamingJob" />
       <item itemvalue="Application.WordCountDemo" />
       <item itemvalue="Application.OperatorDemo" />
       <item itemvalue="Application.SinkRedisDemo" />
       <item itemvalue="Application.SinkEsDemo" />
+      <item itemvalue="Application.SinkMysqlDemo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SinkMysqlDemo" />
         <item itemvalue="Application.SinkEsDemo" />
         <item itemvalue="Application.SinkRedisDemo" />
         <item itemvalue="Application.OperatorDemo" />
         <item itemvalue="Application.WordCountDemo" />
-        <item itemvalue="Application.StreamingJob" />
       </list>
     </recent_temporary>
   </component>

@@ -88,6 +88,11 @@ under the License.
 			<artifactId>flink-connector-elasticsearch6_2.12</artifactId>
 			<version>1.10.1</version>
 		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.44</version>
+		</dependency>
 
 		<!-- Add connector dependencies here. They must be in the default scope (compile). -->
 
