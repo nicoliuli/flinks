@@ -104,12 +104,12 @@ public class OperatorDemo {
         env.socketTextStream("localhost", 8888).flatMap(new RichFlatMapFunction<String, Object>() {
             @Override
             public void open(Configuration parameters) throws Exception {
-                System.out.println("open");
+                System.out.println("open"); //生命周期方法，在生命周期内只会执行一次
             }
 
             @Override
             public void close() throws Exception {
-                System.out.println("close");
+                System.out.println("close"); //生命周期方法，在生命周期内只会执行一次
             }
 
             @Override
