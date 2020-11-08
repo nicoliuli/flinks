@@ -29,15 +29,16 @@ public class SinkMysqlDemo {
 }
 
 // 为什么要rich呢？rich是富函数，有上下文、生命周期等方法
-class MysqlSink extends RichSinkFunction {
+class MysqlSink extends RichSinkFunction<String> {
     PreparedStatement ps;
     Connection connection;
     @Override
     public void open(Configuration parameters) throws Exception {
         // 创建jdbc连接
         connection = getConnection();
-        String sql = "insert xxx";
+        String sql = "INSERT INTO abc_test (testabc) VALUES(?)";
         ps = this.connection.prepareStatement(sql);
+
     }
 
     @Override
@@ -50,8 +51,8 @@ class MysqlSink extends RichSinkFunction {
     }
 
     @Override
-    public void invoke(Object value, Context context) throws Exception {
-        ps.setString(1,""); // 填充字段
+    public void invoke(String value, Context context) throws Exception {
+        ps.setString(1,value.toString()); // 填充字段
         ps.execute();
     }
 
@@ -59,7 +60,7 @@ class MysqlSink extends RichSinkFunction {
         Connection con = null;
         try {
             Class.forName("org.gjt.mm.mysql.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://192.168.234.130:3306/xc_group?useUnicode=true&characterEncoding=UTF-8", "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8", "test_liuli", "p!rM+LXMR9*e=");
         } catch (Exception e) {
             System.out.println("-----------mysql get connection has exception , msg = "+ e.getMessage());
         }

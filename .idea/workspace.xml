@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day01/TopNDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day01/TopNDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day02/SinkMysqlDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day02/SinkMysqlDemo.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +53,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.wb.common" />
       <recent name="com.wb.day01" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -71,7 +72,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SinkMysqlDemo">
+  <component name="RunManager" selected="Application.SourceMysqlDemo">
     <configuration name="OperatorDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day01.OperatorDemo" />
@@ -128,13 +129,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WordCountDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="SourceMysqlDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day01.WordCountDemo" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day02.SourceMysqlDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.day01.*" />
+          <option name="PATTERN" value="com.wb.day02.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,19 +144,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.WordCountDemo" />
       <item itemvalue="Application.OperatorDemo" />
       <item itemvalue="Application.SinkRedisDemo" />
       <item itemvalue="Application.SinkEsDemo" />
       <item itemvalue="Application.SinkMysqlDemo" />
+      <item itemvalue="Application.SourceMysqlDemo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SourceMysqlDemo" />
         <item itemvalue="Application.SinkMysqlDemo" />
         <item itemvalue="Application.SinkEsDemo" />
         <item itemvalue="Application.SinkRedisDemo" />
         <item itemvalue="Application.OperatorDemo" />
-        <item itemvalue="Application.WordCountDemo" />
       </list>
     </recent_temporary>
   </component>
