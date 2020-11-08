@@ -8,6 +8,8 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.source.RichSourceFunction;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
+import org.apache.flink.streaming.api.windowing.time.Time;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,7 +28,7 @@ public class SourceMysqlDemo {
                 tuple2.f1 = 1L;
                 return tuple2;
             }
-        }).keyBy(0).reduce(new ReduceFunction<Tuple2<Integer, Long>>() {
+        }).keyBy(0).window(TumblingProcessingTimeWindows.of(Time.seconds(5))).reduce(new ReduceFunction<Tuple2<Integer, Long>>() {
             @Override
             public Tuple2<Integer, Long> reduce(Tuple2<Integer, Long> value1, Tuple2<Integer, Long> value2) throws Exception {
                 Tuple2 reduce = new Tuple2();
