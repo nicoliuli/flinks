@@ -123,11 +123,11 @@ class WindowResultFunction extends ProcessWindowFunction<Long, ItemBuyCount, Tup
 
     }*/
 
-    // iterable会将ItemBuyCount缓存在iterable中，iterable会缓存整个窗口时间内的所有数据
+    // iterable会缓存keyby后所有的当前窗口时间内的聚合后的数据
     @Override
     public void process(Tuple key, Context context, Iterable<Long> iterable, Collector<ItemBuyCount> collector) throws Exception {
         Long itemId = ((Tuple1<Long>) key).f0;
-        Long count = iterable.iterator().next();
+        Long count = iterable.iterator().next(); // 返回当前keyby的窗口聚合后的数据
         collector.collect(ItemBuyCount.of(itemId, context.window().getEnd(), count));  // 输出到下一个算子
     }
 }

@@ -31,7 +31,7 @@ public class WindowAndWatermarkDemo {
                 String[] s = value.split(" ");
                 Tuple2 t = new Tuple2();
                 t.f0 = s[0];
-                t.f1 = System.currentTimeMillis()-10000;//Long.parseLong(s[1]);
+                t.f1 = System.currentTimeMillis();//Long.parseLong(s[1]);
                 return t;
             }
         }).assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor<Tuple2<String, Long>>(Time.seconds(1)) { // 延迟10s（最大乱序程度）
