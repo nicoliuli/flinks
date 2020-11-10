@@ -80,6 +80,12 @@ class MyProcessFunction extends ProcessWindowFunction<Sensor, String, Tuple, Tim
         }
 
     }
+
+    @Override
+    public void clear(Context context) throws Exception {
+        //super.clear(context);
+        listState.clear();// 清空状态
+    }
 }
 
 
