@@ -7,8 +7,10 @@ import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.api.common.state.ListState;
 import org.apache.flink.api.common.state.ListStateDescriptor;
 import org.apache.flink.api.java.tuple.Tuple;
+import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.TimeCharacteristic;
+import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
@@ -16,6 +18,7 @@ import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
+import org.apache.flink.util.OutputTag;
 import scala.Int;
 
 import java.util.ArrayList;
@@ -37,7 +40,8 @@ public class SensorDemo {
     }
 
     public static void fromSocket(StreamExecutionEnvironment env) throws Exception {
-        env.socketTextStream("localhost", 8888).map(new MapFunction<String, Sensor>() {
+        OutputTag outputTag = new OutputTag<String>("out-side"){};
+        SingleOutputStreamOperator<String> process = env.socketTextStream("localhost", 8888).map(new MapFunction<String, Sensor>() {
             @Override
             public Sensor map(String value) throws Exception {
                 // String[] split = value.split(" ");
@@ -48,14 +52,24 @@ public class SensorDemo {
             public long extractTimestamp(Sensor element) {
                 return element.getTimestamp();
             }
-        }).keyBy("deviceId").timeWindow(Time.seconds(5)).process(new MyProcessFunction()).print();
+        }).keyBy("deviceId").timeWindow(Time.seconds(5)).process(new MyProcessFunction(outputTag));
+        process.print();
+        process.getSideOutput(outputTag).print(); // 侧输出流
+
     }
 }
 
 
 class MyProcessFunction extends ProcessWindowFunction<Sensor, String, Tuple, TimeWindow> {
-    ListState<Integer> listState;
+    public MyProcessFunction(OutputTag outputTag) {
+        this.outputTag = outputTag;
+    }
 
+    public MyProcessFunction() {
+    }
+
+    ListState<Integer> listState;
+    OutputTag outputTag;
     @Override
     public void open(Configuration parameters) throws Exception {
         ListStateDescriptor listStateDescriptor = new ListStateDescriptor("listState", Integer.class);
@@ -78,12 +92,14 @@ class MyProcessFunction extends ProcessWindowFunction<Sensor, String, Tuple, Tim
                 }
             }
         }
+        context.output(outputTag,"测输出流的数据-->"+context.window().getEnd()); // 侧输出流，可以用作分流
 
     }
 
     @Override
     public void clear(Context context) throws Exception {
         //super.clear(context);
+        System.out.println("清空状态变量，"+context.window().getEnd());
         listState.clear();// 清空状态
     }
 }
