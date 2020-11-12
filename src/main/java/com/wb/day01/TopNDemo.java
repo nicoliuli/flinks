@@ -48,7 +48,7 @@ public class TopNDemo {
                 .keyBy("itemId") // 根据商品id聚合
                 .timeWindow(Time.minutes(60L), Time.minutes(5L))
                 .aggregate(new CountAgg(), new WindowResultFunction()) // 1、积攒了分组后的，当前窗口的所有数据
-                .keyBy("windowEnd")                            // 2、然后分组
+                .keyBy("windowEnd")                        // 2、然后分组
                 .process(new TopNHotItems(3))                   // 3、整个窗口的数据收集齐，然后排序得出前三名
                 .print();
 
