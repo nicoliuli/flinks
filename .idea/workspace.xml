@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day01/TopNDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day01/TopNDemo.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,10 +73,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SensorDemo">
-    <configuration name="CsvTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.KeyedProcessFunctionDemo">
+    <configuration name="KeyedProcessFunctionDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day03.CsvTest" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day03.KeyedProcessFunctionDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
@@ -147,18 +146,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.WindowAndWatermarkDemo" />
-      <item itemvalue="Application.CsvTest" />
       <item itemvalue="Application.ProcessFunctionDemo" />
       <item itemvalue="Application.SensorDemo" />
       <item itemvalue="Application.WindowAllDemo" />
+      <item itemvalue="Application.KeyedProcessFunctionDemo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.KeyedProcessFunctionDemo" />
         <item itemvalue="Application.SensorDemo" />
         <item itemvalue="Application.WindowAllDemo" />
         <item itemvalue="Application.ProcessFunctionDemo" />
         <item itemvalue="Application.WindowAndWatermarkDemo" />
-        <item itemvalue="Application.CsvTest" />
       </list>
     </recent_temporary>
   </component>
