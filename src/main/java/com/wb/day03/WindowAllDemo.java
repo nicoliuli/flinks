@@ -35,7 +35,7 @@ public class WindowAllDemo {
         }).assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor<Sensor>(Time.milliseconds(30)) {
             @Override
             public long extractTimestamp(Sensor element) {
-                return element.getTimestamp();
+                return element.getTimestamps();
             }
         }).timeWindowAll(Time.seconds(5)).reduce(new ReduceFunction<Sensor>() {
             @Override

@@ -1,25 +1,20 @@
 package com.wb.day03;
 
 import com.wb.common.Sensor;
-import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.common.functions.MapFunction;
-import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.api.common.state.ListState;
 import org.apache.flink.api.common.state.ListStateDescriptor;
 import org.apache.flink.api.java.tuple.Tuple;
-import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
-import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
 import org.apache.flink.util.OutputTag;
-import scala.Int;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -50,7 +45,7 @@ public class SensorDemo {
         }).assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor<Sensor>(Time.milliseconds(30)) {
             @Override
             public long extractTimestamp(Sensor element) {
-                return element.getTimestamp();
+                return element.getTimestamps();
             }
         }).keyBy("deviceId").timeWindow(Time.seconds(5)).process(new MyProcessFunction(outputTag));
         process.print();

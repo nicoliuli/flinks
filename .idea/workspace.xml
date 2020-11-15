@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/common/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/common/Sensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day03/SensorDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day03/SensorDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day03/WindowAllDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day03/WindowAllDemo.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +58,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.wb.day04" />
       <recent name="com.wb.common" />
       <recent name="com.wb.day01" />
     </key>
@@ -73,7 +78,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.KeyedProcessFunctionDemo">
+  <component name="RunManager" selected="Application.TableApiDemo3">
     <configuration name="KeyedProcessFunctionDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day03.KeyedProcessFunctionDemo" />
@@ -88,13 +93,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProcessFunctionDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="SqlDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day03.ProcessFunctionDemo" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.SqlDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.day03.*" />
+          <option name="PATTERN" value="com.wb.day04.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -102,13 +107,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SensorDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TableApiDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day03.SensorDemo" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiDemo1" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.day03.*" />
+          <option name="PATTERN" value="com.wb.day04.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,13 +121,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WindowAllDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TableApiDemo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day03.WindowAllDemo" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiDemo2" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.day03.*" />
+          <option name="PATTERN" value="com.wb.day04.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,13 +135,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WindowAndWatermarkDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TableApiDemo3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day03.WindowAndWatermarkDemo" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiDemo3" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.day03.*" />
+          <option name="PATTERN" value="com.wb.day04.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -145,19 +150,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.WindowAndWatermarkDemo" />
-      <item itemvalue="Application.ProcessFunctionDemo" />
-      <item itemvalue="Application.SensorDemo" />
-      <item itemvalue="Application.WindowAllDemo" />
       <item itemvalue="Application.KeyedProcessFunctionDemo" />
+      <item itemvalue="Application.TableApiDemo1" />
+      <item itemvalue="Application.SqlDemo" />
+      <item itemvalue="Application.TableApiDemo2" />
+      <item itemvalue="Application.TableApiDemo3" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TableApiDemo3" />
+        <item itemvalue="Application.TableApiDemo2" />
+        <item itemvalue="Application.SqlDemo" />
+        <item itemvalue="Application.TableApiDemo1" />
         <item itemvalue="Application.KeyedProcessFunctionDemo" />
-        <item itemvalue="Application.SensorDemo" />
-        <item itemvalue="Application.WindowAllDemo" />
-        <item itemvalue="Application.ProcessFunctionDemo" />
-        <item itemvalue="Application.WindowAndWatermarkDemo" />
       </list>
     </recent_temporary>
   </component>

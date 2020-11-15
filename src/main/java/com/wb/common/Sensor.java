@@ -13,7 +13,7 @@ public class Sensor {
     /**
      * 时间戳
      */
-    private Long timestamp;
+    private Long timestamps;
 
 
     public String getDeviceId() {
@@ -32,19 +32,19 @@ public class Sensor {
         this.temperature = temperature;
     }
 
-    public Long getTimestamp() {
-        return timestamp;
+    public Long getTimestamps() {
+        return timestamps;
     }
 
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamps(Long timestamps) {
+        this.timestamps = timestamps;
     }
 
 
-    public Sensor(String deviceId, Integer temperature, Long timestamp) {
+    public Sensor(String deviceId, Integer temperature, Long timestamps) {
         this.deviceId = deviceId;
         this.temperature = temperature;
-        this.timestamp = timestamp;
+        this.timestamps = timestamps;
     }
 
     public Sensor() {
@@ -55,7 +55,7 @@ public class Sensor {
         return "Sensor{" +
                 "deviceId='" + deviceId + '\'' +
                 ", temperature=" + temperature +
-                ", timestamp=" + timestamp +
+                ", timestamp=" + timestamps +
                 '}';
     }
 }
