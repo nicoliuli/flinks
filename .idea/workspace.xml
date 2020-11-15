@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/common/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/common/Sensor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day03/SensorDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day03/SensorDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day03/WindowAllDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day03/WindowAllDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo2.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,38 +75,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TableApiDemo3">
-    <configuration name="KeyedProcessFunctionDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day03.KeyedProcessFunctionDemo" />
-      <module name="com.wb.flink" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wb.day03.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.TableApiOutput">
     <configuration name="SqlDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day04.SqlDemo" />
-      <module name="com.wb.flink" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wb.day04.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TableApiDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiDemo1" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
@@ -149,20 +118,48 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TableApiDemo4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiDemo4" />
+      <module name="com.wb.flink" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wb.day04.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TableApiOutput" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiOutput" />
+      <module name="com.wb.flink" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wb.day04.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.KeyedProcessFunctionDemo" />
-      <item itemvalue="Application.TableApiDemo1" />
       <item itemvalue="Application.SqlDemo" />
       <item itemvalue="Application.TableApiDemo2" />
       <item itemvalue="Application.TableApiDemo3" />
+      <item itemvalue="Application.TableApiDemo4" />
+      <item itemvalue="Application.TableApiOutput" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TableApiOutput" />
+        <item itemvalue="Application.TableApiDemo4" />
         <item itemvalue="Application.TableApiDemo3" />
         <item itemvalue="Application.TableApiDemo2" />
         <item itemvalue="Application.SqlDemo" />
-        <item itemvalue="Application.TableApiDemo1" />
-        <item itemvalue="Application.KeyedProcessFunctionDemo" />
       </list>
     </recent_temporary>
   </component>
