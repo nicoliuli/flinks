@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/SqlDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/SqlDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiOutput1.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,21 +77,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TableApiOutput">
-    <configuration name="SqlDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.SqlDemo" />
-      <module name="com.wb.flink" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wb.day04.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.TableApiOutput2">
     <configuration name="TableApiDemo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiDemo2" />
@@ -132,9 +120,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TableApiOutput" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TableApiOutput1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiOutput" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiOutput1" />
+      <module name="com.wb.flink" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wb.day04.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TableApiOutput2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.TableApiOutput2" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
@@ -147,19 +149,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.SqlDemo" />
       <item itemvalue="Application.TableApiDemo2" />
       <item itemvalue="Application.TableApiDemo3" />
       <item itemvalue="Application.TableApiDemo4" />
-      <item itemvalue="Application.TableApiOutput" />
+      <item itemvalue="Application.TableApiOutput1" />
+      <item itemvalue="Application.TableApiOutput2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TableApiOutput" />
+        <item itemvalue="Application.TableApiOutput2" />
+        <item itemvalue="Application.TableApiOutput1" />
         <item itemvalue="Application.TableApiDemo4" />
         <item itemvalue="Application.TableApiDemo3" />
         <item itemvalue="Application.TableApiDemo2" />
-        <item itemvalue="Application.SqlDemo" />
       </list>
     </recent_temporary>
   </component>

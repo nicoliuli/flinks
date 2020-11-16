@@ -112,10 +112,23 @@ under the License.
 			<version>1.10.2</version>
 			<scope>provided</scope>
 		</dependency>
+		<!--csv格式转化-->
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-csv</artifactId>
 			<version>1.10.2</version>
+		</dependency>
+		<!--json格式转化-->
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-json</artifactId>
+			<version>1.11.2</version>
+		</dependency>
+		<!--为flink table api提供的连接器-->
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-jdbc_2.11</artifactId>
+			<version>1.10.1</version>
 		</dependency>
 
 		<!-- Add connector dependencies here. They must be in the default scope (compile). -->

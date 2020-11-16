@@ -4,10 +4,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.DataTypes;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.java.StreamTableEnvironment;
-import org.apache.flink.table.descriptors.Csv;
-import org.apache.flink.table.descriptors.FileSystem;
-import org.apache.flink.table.descriptors.Kafka;
-import org.apache.flink.table.descriptors.Schema;
+import org.apache.flink.table.descriptors.*;
 
 /**
  * 从kafka读取数据
@@ -15,7 +12,7 @@ import org.apache.flink.table.descriptors.Schema;
  * device1,2,333
  * 输出到文件
  */
-public class TableApiOutput {
+public class TableApiOutput1 {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);

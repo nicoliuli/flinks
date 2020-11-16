@@ -11,7 +11,7 @@ public class SqlDemo {
     public static void main(String[] args) throws Exception {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
-        SingleOutputStreamOperator<Sensor> dataStream = env.readTextFile("/Users/liuli/aaa.txt").map(new MapFunction<String, Sensor>() {
+        SingleOutputStreamOperator<Sensor> dataStream = env.readTextFile("/Users/liuli/code/flink/flinks/src/main/resources/aaa.txt").map(new MapFunction<String, Sensor>() {
             @Override
             public Sensor map(String value) throws Exception {
                 String[] split = value.split(",");
