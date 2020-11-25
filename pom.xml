@@ -80,7 +80,7 @@ under the License.
 
 		<dependency>
 			<groupId>org.apache.bahir</groupId>
-			<artifactId>flink-connector-redis_2.11</artifactId>
+			<artifactId>flink-connector-redis_${scala.binary.version}</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
@@ -102,21 +102,21 @@ under the License.
 		</dependency>-->
 		<dependency>
 			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-table-planner_2.11</artifactId>
-			<version>1.10.2</version>
+			<artifactId>flink-table-planner_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-table-planner-blink_2.11</artifactId>
-			<version>1.10.2</version>
+			<artifactId>flink-table-planner-blink_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<!--csv格式转化-->
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-csv</artifactId>
-			<version>1.10.2</version>
+			<version>${flink.version}</version>
 		</dependency>
 		<!--json格式转化-->
 		<dependency>
@@ -127,8 +127,14 @@ under the License.
 		<!--为flink table api提供的连接器-->
 		<dependency>
 			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-jdbc_2.11</artifactId>
+			<artifactId>flink-jdbc_${scala.binary.version}</artifactId>
 			<version>1.10.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-cep_${scala.binary.version}</artifactId>
+			<version>${flink.version}</version>
 		</dependency>
 
 		<!-- Add connector dependencies here. They must be in the default scope (compile). -->
