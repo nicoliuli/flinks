@@ -1,10 +1,12 @@
 package com.wb.day06;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
+import org.apache.flink.cep.pattern.conditions.SimpleCondition;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.time.Time;
@@ -23,7 +25,7 @@ public class FlinkCepDemo02 {
             }
         });
 
-        Pattern<Login, Login> loginFailPattern = test8();
+        Pattern<Login, Login> loginFailPattern = test5();
 
 
         PatternStream<Login> patternStream = CEP.pattern(
@@ -35,6 +37,8 @@ public class FlinkCepDemo02 {
             List<Login> first = pattern.get("begin");
             List<Login> second = pattern.get("next");
 
+            System.out.println(JSON.toJSONString(pattern));
+
             LoginWarn loginWarning = new LoginWarn();
             loginWarning.setType(first.get(0).getType());
             loginWarning.setUserId(first.get(0).getUserId());
@@ -43,6 +47,27 @@ public class FlinkCepDemo02 {
         loginFailDataStream.print();
 
         env.execute("Flink Streaming Java API Skeleton");
+    }
+
+    // 输入 cdaaadab consecutive输出：caaab 没有consecutive输出：caaaab
+    private static Pattern<Login, Login> test9() {
+        return Pattern.<Login>begin("begin").where(new SimpleCondition<Login>() {
+            @Override
+            public boolean filter(Login value) throws Exception {
+                return value.getType().equals("c");
+            }
+        }).followedBy("next").where(new SimpleCondition<Login>() {
+            @Override
+            public boolean filter(Login value) throws Exception {
+                return value.getType().equals("a");
+            }
+        }).oneOrMore()//.consecutive() //紧邻
+        .followedBy("end").where(new SimpleCondition<Login>() {
+            @Override
+            public boolean filter(Login value) throws Exception {
+                return value.getType().equals("b");
+            }
+        });
     }
 
     private static Pattern<Login, Login> test8() {
