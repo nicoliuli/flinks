@@ -61,14 +61,12 @@ public class OrderTimeoutDemo {
                 return value.getOrderId();
             }
         }).process(new KeyedProcessFunction<Long, OrderEvent, String>() {
-            ValueState<Boolean> createState = null;
+
             ValueState<Boolean> payState = null;
             ValueState<Long> timeState = null;
 
             @Override
             public void open(Configuration parameters) throws Exception {
-                ValueStateDescriptor<Boolean> createDesc = new ValueStateDescriptor<Boolean>("createState", Boolean.class);
-                createState = getRuntimeContext().getState(createDesc);
                 ValueStateDescriptor<Boolean> payDesc = new ValueStateDescriptor<Boolean>("payState", Boolean.class);
                 payState = getRuntimeContext().getState(payDesc);
                 ValueStateDescriptor<Long> timeDesc = new ValueStateDescriptor<Long>("timeState", Long.class);
@@ -89,20 +87,21 @@ public class OrderTimeoutDemo {
                         payState.clear();
                         timeState.clear();
                     } else {
-                        long time = event.getTime() * 1000 + 600 * 1000;
+                        long time = event.getTime() * 1000 + 60 * 1000; //注册定时器
                         ctx.timerService().registerEventTimeTimer(time);
                         timeState.update(time);
                     }
                 } else if (event.getType().equals("pay")) {
-                    if (timerTs > 0) {
+                    if (timerTs > 0) { // 已经有create事件
                         if (timerTs > event.getTime() * 1000) {
                             out.collect(event + " 属于正常订单2");
                         } else {
                             ctx.output(outputTag, event + " time out");
                         }
+                        ctx.timerService().deleteEventTimeTimer(timerTs);
                     } else { // pay事件先来，注册定时器等create事件
-                        payState.update(true);
                         ctx.timerService().registerEventTimeTimer(event.getTime() * 1000L);
+                        payState.update(true);
                         timeState.update(event.getTime() * 1000L);
                     }
                 }
@@ -114,7 +113,7 @@ public class OrderTimeoutDemo {
                 if (isPay == null) isPay = false;
                 if (isPay == true) {
                     ctx.output(outputTag, ctx.getCurrentKey() + " payed,but not create");
-                } else {
+                } else { // 典型场景，只create,没有pay
                     ctx.output(outputTag, ctx.getCurrentKey() + " order time out");
                 }
                 payState.clear();
