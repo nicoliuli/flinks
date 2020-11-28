@@ -18,22 +18,27 @@ import org.apache.flink.util.Collector;
 import org.apache.flink.util.OutputTag;
 
 // 实时对账
-public class TxMatchDemo {
+public class TxMatchDemo1 {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
-        // 定义测输出流，输出只有pay事件没有receipt事件的异常信息
-        OutputTag payEventTag = new OutputTag<String>("payEventTag-side") {};
-        // 定义测输出流，输出只有receipt事件没有pay事件的异常信息
+        fromCsv(env);
+
+        env.execute("order timeout job");
+    }
+
+    private static void fromCsv(StreamExecutionEnvironment env) throws Exception {
+
+        OutputTag orderEventTag = new OutputTag<String>("orderEventTag-side") {};
         OutputTag receiptEventTag = new OutputTag<String>("receiptEventTag-side") {};
 
         // 读取订单数据
-        KeyedStream<OrderEvents, String> orderStream = env.socketTextStream("localhost", 8888)./*readTextFile("/Users/liuli/code/flink/flinks/src/main/resources/OrderEvents.csv").*/map(new MapFunction<String, OrderEvents>() {
+        KeyedStream<OrderEvents, String> stream1 = env.socketTextStream("localhost",8888)./*readTextFile("/Users/liuli/code/flink/flinks/src/main/resources/OrderEvents.csv").*/map(new MapFunction<String, OrderEvents>() {
             @Override
             public OrderEvents map(String value) throws Exception {
                 String[] split = value.split(",");
-                return new OrderEvents(Long.parseLong(split[0]), split[1], split[2], System.currentTimeMillis() / 1000);
+                return new OrderEvents(Long.parseLong(split[0]), split[1], split[2],System.currentTimeMillis()/1000);
             }
         }).assignTimestampsAndWatermarks(new AscendingTimestampExtractor<OrderEvents>() {
             @Override
@@ -53,11 +58,11 @@ public class TxMatchDemo {
         });
 
         // 读取交易数据
-        KeyedStream<ReceiptEvents, String> receiptStream = env.socketTextStream("localhost", 9999)./*readTextFile("/Users/liuli/code/flink/flinks/src/main/resources/ReceiptLog.csv").*/map(new MapFunction<String, ReceiptEvents>() {
+        KeyedStream<ReceiptEvents, String> stream2 = env.socketTextStream("localhost",9999)./*readTextFile("/Users/liuli/code/flink/flinks/src/main/resources/ReceiptLog.csv").*/map(new MapFunction<String, ReceiptEvents>() {
             @Override
             public ReceiptEvents map(String value) throws Exception {
                 String[] split = value.split(",");
-                return new ReceiptEvents(split[0], split[1], System.currentTimeMillis() / 1000);
+                return new ReceiptEvents(split[0], split[1], System.currentTimeMillis()/1000);
             }
         }).assignTimestampsAndWatermarks(new AscendingTimestampExtractor<ReceiptEvents>() {
             @Override
@@ -71,84 +76,74 @@ public class TxMatchDemo {
             }
         });
 
-        // connect两条流
-        SingleOutputStreamOperator<String> process = orderStream.connect(receiptStream).process(new MyCoProcessFunction());
+        SingleOutputStreamOperator<String> process = stream1.connect(stream2).process(new MyCoProcessFunction1());
 
-        // 输出正常交易的数据
-        process.print("success");
-        // 输出异常交易的数据
-        process.getSideOutput(payEventTag).print("payEventTag");
+        process.print("process");
+        process.getSideOutput(orderEventTag).print("orderEventTag");
         process.getSideOutput(receiptEventTag).print("receiptEventTag");
-
-        env.execute("Tx Match job");
     }
+
+
 }
 
-class MyCoProcessFunction
-        extends CoProcessFunction<OrderEvents, ReceiptEvents, String> {
+class MyCoProcessFunction1 extends CoProcessFunction<OrderEvents, ReceiptEvents, String> {
 
-    // 定义测输出流，输出只有pay事件没有receipt事件的异常信息
-    OutputTag payEventTag = new OutputTag<String>("payEventTag-side") {};
-    // 定义测输出流，输出只有receipt事件没有pay事件的异常信息
+    OutputTag orderEventTag = new OutputTag<String>("orderEventTag-side") {};
     OutputTag receiptEventTag = new OutputTag<String>("receiptEventTag-side") {};
 
-    // 定义状态,保存订单pay事件和交易事件
-    ValueState<OrderEvents> payEventValueState = null;
+    ValueState<OrderEvents> orderEventValueState = null;
     ValueState<ReceiptEvents> receiptEventValueState = null;
 
     @Override
     public void open(Configuration parameters) throws Exception {
-        ValueStateDescriptor<OrderEvents> descriptor1
-                = new ValueStateDescriptor<OrderEvents>("payEventValueState", OrderEvents.class);
-        ValueStateDescriptor<ReceiptEvents> descriptor2
-                = new ValueStateDescriptor<ReceiptEvents>("receiptEventValueState", ReceiptEvents.class);
-        payEventValueState = getRuntimeContext().getState(descriptor1);
+        ValueStateDescriptor<OrderEvents> descriptor1 = new ValueStateDescriptor<OrderEvents>("orderEventValueState", OrderEvents.class);
+        ValueStateDescriptor<ReceiptEvents> descriptor2 = new ValueStateDescriptor<ReceiptEvents>("receiptEventValueState", ReceiptEvents.class);
+        orderEventValueState = getRuntimeContext().getState(descriptor1);
         receiptEventValueState = getRuntimeContext().getState(descriptor2);
     }
 
-    // 处理OrderEvents事件
     @Override
-    public void processElement1(OrderEvents orderEvents, Context ctx, Collector<String> out) throws Exception {
+    public void processElement1(OrderEvents value, Context ctx, Collector<String> out) throws Exception {
         if (receiptEventValueState.value() != null) {
             // 正常输出匹配
-            out.collect("订单事件："+orderEvents.toString() + "和交易事件：" + receiptEventValueState.value().toString()+" 属于正常交易");
+            out.collect(value.toString() + "<-->" + receiptEventValueState.value().toString());
             receiptEventValueState.clear();
-            payEventValueState.clear();
+            orderEventValueState.clear();
         } else {
             // 如果没有到账事件，注册定时器等待
-            payEventValueState.update(orderEvents);
-            ctx.timerService().registerEventTimeTimer(orderEvents.getTimestamp() * 1000 + 5000L); // 5s
+            orderEventValueState.update(value);
+            ctx.timerService().registerEventTimeTimer(value.getTimestamp() * 1000+5000L); // 5s
         }
     }
 
-    // 处理receipt事件
+
     @Override
-    public void processElement2(ReceiptEvents receiptEvents, Context ctx, Collector<String> out) throws Exception {
-        if (payEventValueState.value() != null) {
+    public void processElement2(ReceiptEvents value, Context ctx, Collector<String> out) throws Exception {
+        if (orderEventValueState.value() != null) {
             // 正常输出
-            out.collect("订单事件："+payEventValueState.value().toString() + "和交易事件：" + receiptEvents.toString()+" 属于正常交易");
+            out.collect(orderEventValueState.value().toString() + "<-->" + value.toString());
             receiptEventValueState.clear();
-            payEventValueState.clear();
+            orderEventValueState.clear();
         } else {
-            // 如果没有订单事件，说明是乱序事件，注册定时器等待
-            receiptEventValueState.update(receiptEvents);
-            ctx.timerService().registerEventTimeTimer(receiptEvents.getTimestamp() * 1000 + 3000L); // 3s
+            receiptEventValueState.update(value);
+            ctx.timerService().registerEventTimeTimer(value.getTimestamp() * 1000+3000L); // 3s
         }
     }
 
-    // 定时器
     @Override
     public void onTimer(long timestamp, OnTimerContext ctx, Collector<String> out) throws Exception {
-        // 判断哪个状态存在，表示另一个事件没有来
-        if (payEventValueState.value() != null) {
-            ctx.output(payEventTag, payEventValueState.value().toString() + " 有pay事件没有receipt事件，属于异常事件");
+      //  System.out.println("timer==>"+timestamp);
+        // 判断哪个状态存在，表示另一个没来
+        if (orderEventValueState.value() != null) {
+            ctx.output(orderEventTag, orderEventValueState.value().toString() + " 有pay事件没有receipt事件");
         }
 
         if (receiptEventValueState.value() != null) {
-            ctx.output(receiptEventTag, receiptEventValueState.value().toString() + " 有receipt事件没有pay事件。属于异常事件");
+            ctx.output(receiptEventTag, receiptEventValueState.value().toString() + " 有receipt事件没有pay事件");
         }
         receiptEventValueState.clear();
-        payEventValueState.clear();
+        orderEventValueState.clear();
     }
+
 }
 

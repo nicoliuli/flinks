@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day03/TxMatchDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day03/TxMatchDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/OrderEvents.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/OrderEvents.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ReceiptLog.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ReceiptLog.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +50,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/wb/day03" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -61,8 +64,8 @@
       <recent name="com.wb.day01" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/com/wb/day03" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/com/wb/day06" />
       <recent name="$PROJECT_DIR$/src/main/java/com/wb/day05" />
       <recent name="$PROJECT_DIR$" />
