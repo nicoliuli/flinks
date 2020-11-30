@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * wordCount,从网络流输入数据，统计并输出
+ *
  */
 public class TopNDemo {
 
