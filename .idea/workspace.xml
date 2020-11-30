@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day03/TxMatchDemo1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo3.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +55,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.wb.day07" />
       <recent name="com.wb.day04" />
       <recent name="com.wb.day03" />
       <recent name="com.wb.common" />
@@ -82,10 +81,24 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ContinuousEventTimeTriggerDemo">
+  <component name="RunManager" selected="Application.PurgingTriggerDemo">
     <configuration name="ContinuousEventTimeTriggerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day07.ContinuousEventTimeTriggerDemo" />
+      <module name="com.wb.flink" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wb.day07.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PurgingTriggerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day07.PurgingTriggerDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
@@ -139,34 +152,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TxMatchDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day03.TxMatchDemo1" />
-      <module name="com.wb.flink" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wb.day03.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.TxMatchDemo" />
-      <item itemvalue="Application.TxMatchDemo1" />
       <item itemvalue="Application.SqlDemo" />
       <item itemvalue="Application.TableApiDemo3" />
       <item itemvalue="Application.ContinuousEventTimeTriggerDemo" />
+      <item itemvalue="Application.PurgingTriggerDemo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PurgingTriggerDemo" />
         <item itemvalue="Application.ContinuousEventTimeTriggerDemo" />
         <item itemvalue="Application.TableApiDemo3" />
         <item itemvalue="Application.SqlDemo" />
         <item itemvalue="Application.TxMatchDemo" />
-        <item itemvalue="Application.TxMatchDemo1" />
       </list>
     </recent_temporary>
   </component>
