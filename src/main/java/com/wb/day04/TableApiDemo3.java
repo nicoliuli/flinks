@@ -35,6 +35,7 @@ public class TableApiDemo3 {
 
         tabEnv.toAppendStream(resultTable, Sensor.class).print();
 
+
         env.execute("Flink Streaming Java API Skeleton");
     }
 }
