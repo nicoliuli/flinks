@@ -1,15 +1,13 @@
 package com.wb.common;
 
-public class Sensor {
+public class Sensor1 {
     /**
      * 设备编号
      */
     private String deviceId;
-    /**
-     * 温度
-     */
-    private Integer temperature;
 
+
+    private Integer tp;
 
     /**
      * 时间戳
@@ -25,13 +23,7 @@ public class Sensor {
         this.deviceId = deviceId;
     }
 
-    public Integer getTemperature() {
-        return temperature;
-    }
 
-    public void setTemperature(Integer temperature) {
-        this.temperature = temperature;
-    }
 
     public Long getTimestamps() {
         return timestamps;
@@ -41,22 +33,29 @@ public class Sensor {
         this.timestamps = timestamps;
     }
 
+    public Integer getTp() {
+        return tp;
+    }
 
-    public Sensor(String deviceId, Integer temperature, Long timestamps) {
+    public void setTp(Integer tp) {
+        this.tp = tp;
+    }
+
+    public Sensor1(String deviceId, Integer temperature, Long timestamps) {
         this.deviceId = deviceId;
-        this.temperature = temperature;
+
         this.timestamps = timestamps;
     }
 
-    public Sensor() {
+    public Sensor1() {
     }
 
     @Override
     public String toString() {
-        return "Sensor{" +
+        return "Sensor1{" +
                 "deviceId='" + deviceId + '\'' +
-                ", temperature=" + temperature +
-                ", timestamp=" + timestamps +
+                ", tp=" + tp +
+                ", timestamps=" + timestamps +
                 '}';
     }
 }

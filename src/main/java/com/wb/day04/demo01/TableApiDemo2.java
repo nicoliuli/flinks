@@ -1,4 +1,4 @@
-package com.wb.day04;
+package com.wb.day04.demo01;
 
 import com.wb.common.Sensor;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -17,6 +17,7 @@ public class TableApiDemo2 {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         StreamTableEnvironment tabEnv = StreamTableEnvironment.create(env);
 
+
         tabEnv.connect(new FileSystem().path("/Users/liuli/code/flink/flinks/src/main/resources/aaa.txt")) //定义文件系统的连接
         .withFormat(/*new OldCsv()*/new Csv()) // 定义以csv的格式进行格式化
         .withSchema(new Schema()    // 定义表结构，并指定字段
@@ -25,7 +26,8 @@ public class TableApiDemo2 {
         .field("timestamps",DataTypes.BIGINT()))
         .createTemporaryTable("inputTable"); //创建临时表
 
-        Table table = tabEnv.from("inputTable");
+     //   Table table = tabEnv.from("inputTable");
+        Table table = tabEnv.sqlQuery("select * from inputTable where deviceId='device1'");
 
         tabEnv.toAppendStream(table, Sensor.class).print();
 

@@ -1,4 +1,4 @@
-package com.wb.day04;
+package com.wb.day04.demo01;
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.DataTypes;
@@ -35,8 +35,10 @@ public class TableApiOutput1 {
         // 定义输出文件
         tabEnv.connect(new FileSystem().path("/Users/liuli/code/flink/flinks/src/main/resources/out.txt"))
                 .withFormat(new Csv())
-                .withSchema(new Schema().field("deviceId",DataTypes.STRING())
-                .field("temperature",DataTypes.INT()).field("timestamps",DataTypes.BIGINT()))
+                .withSchema(new Schema()
+                        .field("deviceId",DataTypes.STRING())
+                        .field("temperature",DataTypes.INT())
+                        .field("timestamps",DataTypes.BIGINT()))
                 .createTemporaryTable("output");
 
         tabEnv.insertInto("output",resultTable);

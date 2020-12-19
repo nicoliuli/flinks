@@ -2,7 +2,7 @@ package com.wb.common;
 
 public class SourceModel {
     private Long id;
-    // binlog 时间戳
+
     private long time;
 
     private String type;

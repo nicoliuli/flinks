@@ -1,4 +1,4 @@
-package com.wb.day04;
+package com.wb.day04.demo01;
 
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;

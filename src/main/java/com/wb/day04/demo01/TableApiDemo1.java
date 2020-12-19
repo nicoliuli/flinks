@@ -1,4 +1,4 @@
-package com.wb.day04;
+package com.wb.day04.demo01;
 
 import com.wb.common.Sensor;
 import org.apache.flink.api.common.functions.MapFunction;
@@ -29,7 +29,7 @@ public class TableApiDemo1 {
         Table table = tableEnv.fromDataStream(dataStream);
 
         // 调用table api进行转换
-        Table resultTab = table.select("deviceId,temperature,timestamp").where("deviceId='device1'");
+        Table resultTab = table.select("deviceId,temperature,timestamps").where("deviceId='device1'");
 
         // 将Table转化为DataStream输出
         tableEnv.toAppendStream(resultTab, Sensor.class).print();

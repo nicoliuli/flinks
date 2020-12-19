@@ -1,15 +1,16 @@
 package com.wb.kafka;
 
 import com.alibaba.fastjson.JSON;
-import com.wb.common.SourceModel;
+import com.wb.common.Sensor;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 import java.util.Random;
+import java.util.UUID;
 
-public class KafkaProducerDemo {
+public class KafkaProducerDemo2 {
     public static void main(String[] args) {
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "localhost:9092");
@@ -25,11 +26,10 @@ public class KafkaProducerDemo {
         try {
             producer = new KafkaProducer<String, String>(properties);
             while (true) {
-                int index = new Random().nextInt(50);
-                SourceModel model = new SourceModel();
-                model.setId(Long.parseLong( index+ ""));
-                model.setTime(System.currentTimeMillis());
-                model.setType(index % 2==0?"open":"close");
+                Sensor model = new Sensor();
+                model.setDeviceId(UUID.randomUUID().toString());
+                model.setTimestamps(System.currentTimeMillis());
+                model.setTemperature(new Random().nextInt(50));
                 producer.send(new ProducerRecord<String, String>("test", JSON.toJSONString(model)));
 
             }

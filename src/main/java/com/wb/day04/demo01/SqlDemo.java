@@ -1,4 +1,4 @@
-package com.wb.day04;
+package com.wb.day04.demo01;
 
 import com.wb.common.Sensor;
 import org.apache.flink.api.common.functions.MapFunction;
