@@ -8,7 +8,6 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 import java.util.Random;
-import java.util.UUID;
 
 public class KafkaProducerDemo2 {
     public static void main(String[] args) {
@@ -23,15 +22,16 @@ public class KafkaProducerDemo2 {
         properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         Producer<String, String> producer = null;
 
+
         try {
             producer = new KafkaProducer<String, String>(properties);
             while (true) {
                 Sensor model = new Sensor();
-                model.setDeviceId(UUID.randomUUID().toString());
+                model.setDeviceId(new Random().nextInt(100)+"aaa");
+            //    model.setDeviceId(UUID.randomUUID().toString());
                 model.setTimestamps(System.currentTimeMillis());
                 model.setTemperature(new Random().nextInt(50));
                 producer.send(new ProducerRecord<String, String>("test", JSON.toJSONString(model)));
-
             }
         } catch (Exception e) {
             e.printStackTrace();

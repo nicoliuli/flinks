@@ -1,9 +1,15 @@
 package com.wb.day04.demo02;
 
 import com.wb.common.Sensor1;
+import org.apache.flink.api.common.typeinfo.TypeInformation;
+import org.apache.flink.api.common.typeinfo.Types;
+import org.apache.flink.api.java.io.jdbc.JDBCAppendTableSink;
+import org.apache.flink.api.java.io.jdbc.JDBCOptions;
+import org.apache.flink.api.java.io.jdbc.JDBCUpsertTableSink;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.DataTypes;
 import org.apache.flink.table.api.Table;
+import org.apache.flink.table.api.TableSchema;
 import org.apache.flink.table.api.java.StreamTableEnvironment;
 import org.apache.flink.table.descriptors.Json;
 import org.apache.flink.table.descriptors.Kafka;
@@ -27,33 +33,54 @@ public class TableApiDemo01SourceKafka {
                 .withSchema(new Schema()    // 定义表结构，并指定字段
                         .field("deviceId", DataTypes.STRING())
                         .field("temperature", DataTypes.INT())
-                        .field("timestamps", DataTypes.BIGINT())).inRetractMode()
+                        .field("timestamps", DataTypes.BIGINT()))
+                .inAppendMode()
                 .createTemporaryTable("inputTable");
 
-        sinkToMysql(tabEnv);
+        upsertSinkMysql(tabEnv);
         env.execute("Flink Streaming Java API Skeleton");
     }
 
 
+    // upsert模式，向mysql写数据。
+    private static void upsertSinkMysql(StreamTableEnvironment tabEnv){
+        String sql = "select deviceId,count(*) as cnt from inputTable group by deviceId";
+        Table table = tabEnv.sqlQuery(sql);
+        JDBCOptions options = JDBCOptions.builder()
+                .setDBUrl("jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8")
+                .setDriverName("com.mysql.jdbc.Driver")
+                .setUsername("test_liuli")
+                .setPassword("p!rM+LXMR9*e=")
+                .setTableName("a_device_cnt") // mysql中的表，deviceId必须设置为primary key，否则达不到upsert,只能append
+                .build();
+        TableSchema schema = TableSchema.builder()
+                .field("deviceId",DataTypes.STRING())
+                .field("cnt",DataTypes.BIGINT())
+                .build();
+        JDBCUpsertTableSink sink = JDBCUpsertTableSink.builder()
+                .setOptions(options)
+                .setTableSchema(schema)
+                .build();
+        tabEnv.registerTableSink("output",sink);
+        tabEnv.insertInto("output",table);
 
-    private static void sinkToMysql(StreamTableEnvironment tabEnv){
-        String ddl = "CREATE TABLE output (" +
-                "  id BIGINT," +
-                "  name STRING," +
-                "  age INT," +
-                "  status BOOLEAN," +
-                "  PRIMARY KEY (id) NOT ENFORCED" +
-                ") WITH (" +
-                "   'connector' = 'jdbc'," +
-                "   'url' = 'jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8'," +
-                "   'table-name' = 'users'" +
-                "   'username' = 'test_liuli'" +
-                "   'password' = 'p!rM+LXMR9*e='" +
-                ");";
-        tabEnv.sqlUpdate(ddl);
+    }
+
+    // 通过append模式，向mysql追加数据
+    private static void appendSinkToMysql(StreamTableEnvironment tabEnv){
         String sql = "select deviceId,temperature,timestamps from inputTable where deviceId like '%143%'";
         Table table = tabEnv.sqlQuery(sql);
-        tabEnv.insertInto("output",table);
+        JDBCAppendTableSink tableSink = JDBCAppendTableSink.builder()
+                .setDBUrl("jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8")
+                .setUsername("test_liuli")
+                .setPassword("p!rM+LXMR9*e=")
+                .setDrivername("com.mysql.jdbc.Driver")
+                .setQuery("insert into a_device(deviceId,temperature,timestamps) values(?,?,?)")
+                .setParameterTypes(TypeInformation.of(String.class), TypeInformation.of(Integer.class), TypeInformation.of(Long.class))
+                .build();
+        TypeInformation[] fieldTypes = {Types.STRING, Types.INT,Types.LONG};
+        tabEnv.registerTableSink("jdbcSink",new String[]{"deviceId","temperature","timestamps"},fieldTypes,tableSink);
+        tabEnv.insertInto("jdbcSink",table);
     }
 
     // 从kafka读取数据，经过sql过滤出想要的数据，再写入到kafka
@@ -90,6 +117,12 @@ public class TableApiDemo01SourceKafka {
     // like 语句
     private static void like(StreamTableEnvironment tabEnv){
         String sql = "select deviceId,temperature as tp,timestamps from inputTable where deviceId like '%1435%'";
+        Table table = tabEnv.sqlQuery(sql);
+        tabEnv.toAppendStream(table, Sensor1.class).print();
+    }
+
+    private static void print(StreamTableEnvironment tabEnv){
+        String sql = "select deviceId,temperature as tp,timestamps from inputTable";
         Table table = tabEnv.sqlQuery(sql);
         tabEnv.toAppendStream(table, Sensor1.class).print();
     }
