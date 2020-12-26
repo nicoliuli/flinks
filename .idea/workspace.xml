@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/common/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/common/Sensor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/common/SourceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/common/SourceModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/PlannerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo01/PlannerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/SqlDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo01/SqlDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo01/TableApiDemo1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo01/TableApiDemo2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo01/TableApiDemo3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiDemo4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo01/TableApiDemo4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiOutput1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo01/TableApiOutput1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/TableApiOutput2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo01/TableApiOutput2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/kafka/KafkaProducerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/kafka/KafkaProducerDemo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo02/TableApiDemo01SourceKafka.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo02/TableApiDemo01SourceKafka.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,13 +83,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TableApiDemo01SourceKafka">
-    <configuration name="KafkaProducerDemo1" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wb.kafka.KafkaProducerDemo1" />
+  <component name="RunManager" selected="Application.BroadcastStateDemo">
+    <configuration name="BroadcastStateDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day03.BroadcastStateDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.kafka.*" />
+          <option name="PATTERN" value="com.wb.day03.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -193,19 +184,19 @@
     <list>
       <item itemvalue="Application.TableApiDemo2" />
       <item itemvalue="Application.LiveStreamRealtimeMetricProdProcessorJob" />
-      <item itemvalue="Application.KafkaProducerDemo1" />
       <item itemvalue="Application.MetricDemo" />
       <item itemvalue="Application.TableApiDemo1" />
       <item itemvalue="Application.TableApiDemo01SourceKafka" />
       <item itemvalue="Application.KafkaProducerDemo2" />
+      <item itemvalue="Application.BroadcastStateDemo" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.KafkaProducerDemo2" />
+        <item itemvalue="Application.BroadcastStateDemo" />
         <item itemvalue="Application.TableApiDemo01SourceKafka" />
+        <item itemvalue="Application.KafkaProducerDemo2" />
         <item itemvalue="Application.TableApiDemo1" />
         <item itemvalue="Application.MetricDemo" />
-        <item itemvalue="Application.KafkaProducerDemo1" />
       </list>
     </recent_temporary>
   </component>

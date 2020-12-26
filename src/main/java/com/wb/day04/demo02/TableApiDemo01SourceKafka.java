@@ -27,17 +27,38 @@ public class TableApiDemo01SourceKafka {
                 .withSchema(new Schema()    // 定义表结构，并指定字段
                         .field("deviceId", DataTypes.STRING())
                         .field("temperature", DataTypes.INT())
-                        .field("timestamps", DataTypes.BIGINT()))
+                        .field("timestamps", DataTypes.BIGINT())).inRetractMode()
                 .createTemporaryTable("inputTable");
 
-        sinkToKafka(tabEnv);
+        sinkToMysql(tabEnv);
         env.execute("Flink Streaming Java API Skeleton");
     }
 
 
 
+    private static void sinkToMysql(StreamTableEnvironment tabEnv){
+        String ddl = "CREATE TABLE output (" +
+                "  id BIGINT," +
+                "  name STRING," +
+                "  age INT," +
+                "  status BOOLEAN," +
+                "  PRIMARY KEY (id) NOT ENFORCED" +
+                ") WITH (" +
+                "   'connector' = 'jdbc'," +
+                "   'url' = 'jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8'," +
+                "   'table-name' = 'users'" +
+                "   'username' = 'test_liuli'" +
+                "   'password' = 'p!rM+LXMR9*e='" +
+                ");";
+        tabEnv.sqlUpdate(ddl);
+        String sql = "select deviceId,temperature,timestamps from inputTable where deviceId like '%143%'";
+        Table table = tabEnv.sqlQuery(sql);
+        tabEnv.insertInto("output",table);
+    }
+
     // 从kafka读取数据，经过sql过滤出想要的数据，再写入到kafka
     private static void sinkToKafka(StreamTableEnvironment tabEnv){
+
         String sql = "select deviceId,temperature,timestamps from inputTable where deviceId like '%143%'";
         Table table = tabEnv.sqlQuery(sql);
         tabEnv.connect(new Kafka().version("0.11")
@@ -52,12 +73,12 @@ public class TableApiDemo01SourceKafka {
         tabEnv.insertInto("output",table);
     }
 
-    /*这么写报错，但不知道为什么
+    //这么写报错，但不知道为什么
     private static void group(StreamTableEnvironment tabEnv){
-        String sql = "select deviceId,count(*) as nums from inputTable group by deviceId";
+        String sql = "select deviceId,count(deviceId) as nums from inputTable group by deviceId";
         Table table = tabEnv.sqlQuery(sql);
         tabEnv.toRetractStream(table, Count.class).print();
-    }*/
+    }
 
     // like and语句
     private static void likeAnd(StreamTableEnvironment tabEnv){
