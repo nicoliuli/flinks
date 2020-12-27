@@ -1,5 +1,6 @@
 package com.wb.day04.demo02;
 
+import com.wb.common.Sensor;
 import com.wb.common.Sensor1;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.common.typeinfo.Types;
@@ -18,7 +19,7 @@ import org.apache.flink.table.descriptors.Schema;
 /**
  * 从kafka读取数据
  */
-public class TableApiDemo01SourceKafka {
+public class FlinkSqlDemo01SourceKafka {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
@@ -33,14 +34,13 @@ public class TableApiDemo01SourceKafka {
                 .withSchema(new Schema()    // 定义表结构，并指定字段
                         .field("deviceId", DataTypes.STRING())
                         .field("temperature", DataTypes.INT())
-                        .field("timestamps", DataTypes.BIGINT()))
+                        .field("timestamps", DataTypes.TIMESTAMP(3)))
                 .inAppendMode()
                 .createTemporaryTable("inputTable");
 
-        upsertSinkMysql(tabEnv);
+        print(tabEnv);
         env.execute("Flink Streaming Java API Skeleton");
     }
-
 
     // upsert模式，向mysql写数据。
     private static void upsertSinkMysql(StreamTableEnvironment tabEnv){
@@ -122,9 +122,9 @@ public class TableApiDemo01SourceKafka {
     }
 
     private static void print(StreamTableEnvironment tabEnv){
-        String sql = "select deviceId,temperature as tp,timestamps from inputTable";
+        String sql = "select deviceId,temperature,timestamps from inputTable";
         Table table = tabEnv.sqlQuery(sql);
-        tabEnv.toAppendStream(table, Sensor1.class).print();
+        tabEnv.toAppendStream(table, Sensor.class).print();
     }
 }
 
