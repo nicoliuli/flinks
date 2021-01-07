@@ -9,10 +9,10 @@ import org.apache.flink.table.api.java.StreamTableEnvironment;
 /**
  * 统计一个文件里uid有多少个（去重后）
  */
-public class DIstinctDemo {
+public class DistinctDemo {
     public static void main(String[] args) throws Exception {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setParallelism(1);
+        env.setParallelism(16);
         SingleOutputStreamOperator<String> dataStream = env.readTextFile("/Users/liuli/code/flink/flinks/src/main/resources/aaaa.txt").map(new MapFunction<String, String>() {
             @Override
             public String map(String value) throws Exception {

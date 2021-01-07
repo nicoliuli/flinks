@@ -63,6 +63,13 @@ public class FlinkSqlDemo01SourceKafka {
                 .build();
         tabEnv.registerTableSink("output",sink);
         tabEnv.insertInto("output",table);
+        /*
+        CREATE TABLE `a_device_cnt` (
+          `deviceId` varchar(64) NOT NULL,
+          `cnt` int(11) DEFAULT NULL,
+          PRIMARY KEY (`deviceId`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+         */
 
     }
 
@@ -81,6 +88,13 @@ public class FlinkSqlDemo01SourceKafka {
         TypeInformation[] fieldTypes = {Types.STRING, Types.INT,Types.LONG};
         tabEnv.registerTableSink("jdbcSink",new String[]{"deviceId","temperature","timestamps"},fieldTypes,tableSink);
         tabEnv.insertInto("jdbcSink",table);
+        /*
+        CREATE TABLE `a_device_cnt` (
+          `deviceId` varchar(64) NOT NULL,
+          `cnt` int(11) DEFAULT NULL,
+          PRIMARY KEY (`deviceId`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+         */
     }
 
     // 从kafka读取数据，经过sql过滤出想要的数据，再写入到kafka
