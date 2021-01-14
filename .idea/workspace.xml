@@ -4,11 +4,15 @@
     <list default="true" id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo02/DIstinctDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo02/DistinctDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo02/FlinkSqlDemo01SourceKafka.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo02/FlinkSqlDemo01SourceKafka.java" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/src/main/resources/downloaded_data.txt" beforeDir="false" />
 >>>>>>> 5aa4e74... 修改ignore文件
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo02/FlinkSqlDemo01SourceKafka.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day04/demo02/FlinkSqlDemo01SourceKafka.java" afterDir="false" />
+>>>>>>> 4508662... 文件倒排索引
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,11 +66,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.wb.kafka" />
+      <recent name="com.wb.day01" />
       <recent name="com.wb.day04.demo02" />
       <recent name="com.wb.day04.demo01" />
       <recent name="com.wb.common" />
-      <recent name="com.wb.kafka" />
-      <recent name="com.wb.day08" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/wb/day04/demo02" />
@@ -88,21 +92,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DistinctDemo2">
-    <configuration name="DistinctDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.DistinctDemo" />
-      <module name="com.wb.flink" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wb.day04.demo02.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.KafkaProducerDemo3">
     <configuration name="DistinctDemo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.DistinctDemo2" />
@@ -117,9 +107,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FlinkSqlDemo02Time" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="FlinkSqlDemo01SourceKafka" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.FlinkSqlDemo02Time" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.FlinkSqlDemo01SourceKafka" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
@@ -131,13 +121,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FlinkTableApiDemo02EventTime" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="IndexDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.FlinkTableApiDemo02EventTime" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day01.IndexDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.day04.demo02.*" />
+          <option name="PATTERN" value="com.wb.day01.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -145,13 +135,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GroupByDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.GroupByDemo1" />
+    <configuration name="KafkaProducerDemo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wb.kafka.KafkaProducerDemo2" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.day04.demo02.*" />
+          <option name="PATTERN" value="com.wb.kafka.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KafkaProducerDemo3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wb.kafka.KafkaProducerDemo3" />
+      <module name="com.wb.flink" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wb.kafka.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -190,19 +192,19 @@
     <list>
       <item itemvalue="Application.TableApiDemo2" />
       <item itemvalue="Application.LiveStreamRealtimeMetricProdProcessorJob" />
-      <item itemvalue="Application.FlinkSqlDemo02Time" />
-      <item itemvalue="Application.FlinkTableApiDemo02EventTime" />
-      <item itemvalue="Application.DistinctDemo" />
       <item itemvalue="Application.DistinctDemo2" />
-      <item itemvalue="Application.GroupByDemo1" />
+      <item itemvalue="Application.IndexDemo" />
+      <item itemvalue="Application.FlinkSqlDemo01SourceKafka" />
+      <item itemvalue="Application.KafkaProducerDemo2" />
+      <item itemvalue="Application.KafkaProducerDemo3" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.KafkaProducerDemo3" />
+        <item itemvalue="Application.IndexDemo" />
+        <item itemvalue="Application.KafkaProducerDemo2" />
+        <item itemvalue="Application.FlinkSqlDemo01SourceKafka" />
         <item itemvalue="Application.DistinctDemo2" />
-        <item itemvalue="Application.GroupByDemo1" />
-        <item itemvalue="Application.DistinctDemo" />
-        <item itemvalue="Application.FlinkTableApiDemo02EventTime" />
-        <item itemvalue="Application.FlinkSqlDemo02Time" />
       </list>
     </recent_temporary>
   </component>

@@ -34,11 +34,11 @@ public class FlinkSqlDemo01SourceKafka {
                 .withSchema(new Schema()    // 定义表结构，并指定字段
                         .field("deviceId", DataTypes.STRING())
                         .field("temperature", DataTypes.INT())
-                        .field("timestamps", DataTypes.TIMESTAMP(3)))
+                        /*.field("timestamps", DataTypes.TIMESTAMP(3))*/)
                 .inAppendMode()
                 .createTemporaryTable("inputTable");
 
-        print(tabEnv);
+        upsertSinkMysql(tabEnv);
         env.execute("Flink Streaming Java API Skeleton");
     }
 
