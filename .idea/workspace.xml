@@ -56,10 +56,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.wb.kafka" />
       <recent name="com.wb.day04.demo02" />
       <recent name="com.wb.day04.demo01" />
       <recent name="com.wb.common" />
-      <recent name="com.wb.kafka" />
       <recent name="com.wb.day08" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -82,7 +82,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GroupByDemo1">
+  <component name="RunManager" selected="Application.WordCountDemo">
     <configuration name="DistinctDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.DistinctDemo" />
@@ -100,34 +100,6 @@
     <configuration name="DistinctDemo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.DistinctDemo2" />
-      <module name="com.wb.flink" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wb.day04.demo02.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlinkSqlDemo02Time" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.FlinkSqlDemo02Time" />
-      <module name="com.wb.flink" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wb.day04.demo02.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlinkTableApiDemo02EventTime" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.FlinkTableApiDemo02EventTime" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
@@ -167,6 +139,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OperatorDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wb.day01.OperatorDemo" />
+      <module name="com.wb.flink" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wb.day01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TableApiDemo2" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo01.TableApiDemo2" />
@@ -181,22 +166,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WordCountDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day01.WordCountDemo" />
+      <module name="com.wb.flink" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wb.day01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.TableApiDemo2" />
       <item itemvalue="Application.LiveStreamRealtimeMetricProdProcessorJob" />
-      <item itemvalue="Application.FlinkSqlDemo02Time" />
-      <item itemvalue="Application.FlinkTableApiDemo02EventTime" />
       <item itemvalue="Application.DistinctDemo" />
       <item itemvalue="Application.DistinctDemo2" />
       <item itemvalue="Application.GroupByDemo1" />
+      <item itemvalue="Application.OperatorDemo" />
+      <item itemvalue="Application.WordCountDemo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WordCountDemo" />
+        <item itemvalue="Application.OperatorDemo" />
         <item itemvalue="Application.GroupByDemo1" />
         <item itemvalue="Application.DistinctDemo" />
         <item itemvalue="Application.DistinctDemo2" />
-        <item itemvalue="Application.FlinkTableApiDemo02EventTime" />
-        <item itemvalue="Application.FlinkSqlDemo02Time" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +204,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f4151545-c66d-4572-9b30-ec4497000d4a" name="Default Changelist" comment="" />
+      <changelist id="c15e9b15-ae95-42da-a05c-efade5844482" name="Default Changelist" comment="" />
       <created>1604415439440</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
