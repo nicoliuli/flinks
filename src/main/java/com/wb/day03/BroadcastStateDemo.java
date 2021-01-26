@@ -30,12 +30,15 @@ public class BroadcastStateDemo {
         MapStateDescriptor<Integer, String> ruleStateDescriptor = new MapStateDescriptor<>("RulesBroadcastState", Integer.class, String.class);
 
         BroadcastStream<Tuple2<Integer, String>> broadcast = env.addSource(new RichSourceFunction<Tuple2<Integer, String>>() {
+            int index = 1;
+
             @Override
             public void run(SourceContext<Tuple2<Integer, String>> ctx) throws Exception {
                 String[] pattern = {"yyyy-MM", "yyyy-MM-dd", "yyyy年MM月"};
                 while (true) {
                     for (String s : pattern) {
-                        ctx.collect(new Tuple2<>(1, s));
+                        ctx.collect(new Tuple2<>(index, s));
+                        index++;
                         Thread.sleep(200);
                     }
                 }
@@ -53,6 +56,7 @@ public class BroadcastStateDemo {
             public void run(SourceContext<Date> ctx) throws Exception {
                 while (true) {
                     ctx.collect(new Date());
+                    Thread.sleep(200);
                 }
             }
 
@@ -77,6 +81,7 @@ public class BroadcastStateDemo {
                 // 获取广播状态
                 Iterable<Map.Entry<Integer, String>> entries = ctx.getBroadcastState(ruleStateDescriptor).immutableEntries();
                 for (Map.Entry<Integer, String> entry : entries) {
+               //     System.out.println("key=" + entry.getKey() + ",value=" + entry.getValue());
                     if (entry.getKey() == 1) {
                         format = entry.getValue();
                     }
@@ -88,6 +93,7 @@ public class BroadcastStateDemo {
                 }
             }
 
+            // 会把所有的广播数据，都收集在broadcastState里
             @Override
             public void processBroadcastElement(Tuple2<Integer, String> value, Context ctx, Collector<String> out) throws Exception {
                 // 获取广播状态并更新状态

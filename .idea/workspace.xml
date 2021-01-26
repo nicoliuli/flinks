@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c15e9b15-ae95-42da-a05c-efade5844482" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day03/BroadcastStateDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day03/BroadcastStateDemo.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,14 +83,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.WordCountDemo">
-    <configuration name="DistinctDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.BroadcastStateDemo">
+    <configuration name="BroadcastStateDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.DistinctDemo" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day03.BroadcastStateDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.day04.demo02.*" />
+          <option name="PATTERN" value="com.wb.day03.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,9 +98,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DistinctDemo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="DistinctDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.DistinctDemo2" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo02.DistinctDemo" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
@@ -184,18 +185,18 @@
       <item itemvalue="Application.TableApiDemo2" />
       <item itemvalue="Application.LiveStreamRealtimeMetricProdProcessorJob" />
       <item itemvalue="Application.DistinctDemo" />
-      <item itemvalue="Application.DistinctDemo2" />
       <item itemvalue="Application.GroupByDemo1" />
       <item itemvalue="Application.OperatorDemo" />
       <item itemvalue="Application.WordCountDemo" />
+      <item itemvalue="Application.BroadcastStateDemo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BroadcastStateDemo" />
         <item itemvalue="Application.WordCountDemo" />
         <item itemvalue="Application.OperatorDemo" />
         <item itemvalue="Application.GroupByDemo1" />
         <item itemvalue="Application.DistinctDemo" />
-        <item itemvalue="Application.DistinctDemo2" />
       </list>
     </recent_temporary>
   </component>
