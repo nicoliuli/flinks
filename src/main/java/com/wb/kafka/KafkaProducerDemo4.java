@@ -32,7 +32,7 @@ public class KafkaProducerDemo4 {
             producer = new KafkaProducer<String, String>(properties);
 
             while (true){
-                Thread.sleep(10);
+                Thread.sleep(100);
                 String fromUid = fromUids[new Random().nextInt(fromUids.length)];
                 String toUid = toUids[new Random().nextInt(toUids.length)];
                 Integer amount = amounts[new Random().nextInt(amounts.length)];

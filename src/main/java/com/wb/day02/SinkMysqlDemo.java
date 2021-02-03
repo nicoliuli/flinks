@@ -60,7 +60,7 @@ class MysqlSink extends RichSinkFunction<String> {
         Connection con = null;
         try {
             Class.forName("org.gjt.mm.mysql.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8", "test_liuli", "p!rM+LXMR9*e=");
+            con = DriverManager.getConnection("jdbc:mysql://xxxx", "root", "root");
         } catch (Exception e) {
             System.out.println("-----------mysql get connection has exception , msg = "+ e.getMessage());
         }

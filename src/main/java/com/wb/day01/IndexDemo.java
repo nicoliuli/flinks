@@ -76,10 +76,10 @@ public class IndexDemo {
         Table table = tabEnv.sqlQuery(sql);
 
         JDBCOptions options = JDBCOptions.builder()
-                .setDBUrl("jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8")
+                .setDBUrl("jdbc:mysql://xxxx")
                 .setDriverName("com.mysql.jdbc.Driver")
-                .setUsername("test_liuli")
-                .setPassword("p!rM+LXMR9*e=")
+                .setUsername("root")
+                .setPassword("root")
                 .setTableName("a_word_cnt")
                 .build();
         TableSchema schema = TableSchema.builder()

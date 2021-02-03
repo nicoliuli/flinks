@@ -37,10 +37,10 @@ public class GroupByDemo1 {
         String sql = "SELECT uid,count(*) from log group by uid";
         Table table = tableEnv.sqlQuery(sql);
         JDBCOptions options = JDBCOptions.builder()
-                .setDBUrl("jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8")
+                .setDBUrl("jdbc:mysql://xxxx")
                 .setDriverName("com.mysql.jdbc.Driver")
-                .setUsername("test_liuli")
-                .setPassword("p!rM+LXMR9*e=")
+                .setUsername("root")
+                .setPassword("xxxx")
                 .setTableName("a_user_cnt") // mysql中的表，deviceId必须设置为primary key，否则达不到upsert,只能append
                 .build();
         TableSchema schema = TableSchema.builder()

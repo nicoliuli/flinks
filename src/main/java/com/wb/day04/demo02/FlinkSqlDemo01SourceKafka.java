@@ -47,10 +47,10 @@ public class FlinkSqlDemo01SourceKafka {
         String sql = "select deviceId,count(*) as cnt from inputTable group by deviceId";
         Table table = tabEnv.sqlQuery(sql);
         JDBCOptions options = JDBCOptions.builder()
-                .setDBUrl("jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8")
+                .setDBUrl("jdbc:mysql://xxx")
                 .setDriverName("com.mysql.jdbc.Driver")
-                .setUsername("test_liuli")
-                .setPassword("p!rM+LXMR9*e=")
+                .setUsername("root")
+                .setPassword("root")
                 .setTableName("a_device_cnt") // mysql中的表，deviceId必须设置为primary key，否则达不到upsert,只能append
                 .build();
         TableSchema schema = TableSchema.builder()
@@ -78,9 +78,9 @@ public class FlinkSqlDemo01SourceKafka {
         String sql = "select deviceId,temperature,timestamps from inputTable where deviceId like '%143%'";
         Table table = tabEnv.sqlQuery(sql);
         JDBCAppendTableSink tableSink = JDBCAppendTableSink.builder()
-                .setDBUrl("jdbc:mysql://devtest.wb.sql.wb-intra.com:13306/spy?useUnicode=true&characterEncoding=UTF-8")
-                .setUsername("test_liuli")
-                .setPassword("p!rM+LXMR9*e=")
+                .setDBUrl("jdbc:mysql://root")
+                .setUsername("root")
+                .setPassword("root")
                 .setDrivername("com.mysql.jdbc.Driver")
                 .setQuery("insert into a_device(deviceId,temperature,timestamps) values(?,?,?)")
                 .setParameterTypes(TypeInformation.of(String.class), TypeInformation.of(Integer.class), TypeInformation.of(Long.class))

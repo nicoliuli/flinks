@@ -1,6 +1,7 @@
 package com.wb.day01;
 
 import com.alibaba.fastjson.JSON;
+import com.wb.common.risk.Alert;
 import com.wb.common.risk.Pay;
 import com.wb.common.risk.Rule;
 import com.wb.common.risk.Wrapper;
@@ -9,6 +10,7 @@ import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.common.state.BroadcastState;
 import org.apache.flink.api.common.state.MapState;
 import org.apache.flink.api.common.state.MapStateDescriptor;
+import org.apache.flink.api.common.state.ReadOnlyBroadcastState;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.datastream.BroadcastStream;
@@ -60,11 +62,11 @@ public class Risk {
             @Override
             public void processElement(Pay pay, ReadOnlyContext ctx, Collector<Wrapper> out) throws Exception {
                 // 包装成wrapper
-                Iterable<Map.Entry<Integer, Rule>> ruleEntry = ctx.getBroadcastState(ruleStateDescriptor).immutableEntries();
+                Iterable<Map.Entry<Integer, Rule>> ruleEnties = ctx.getBroadcastState(ruleStateDescriptor).immutableEntries();
                 Integer ruleId = pay.getRuleId();
-                for (Map.Entry<Integer, Rule> rule : ruleEntry) {
-                    if (ruleId.equals(rule.getValue().getRuleId())) {
-                        Wrapper wrapper = new Wrapper(getGroupKey(pay, rule.getValue().getGroupKeyName()), pay);
+                for (Map.Entry<Integer, Rule> ruleEntry : ruleEnties) {
+                    if (ruleId.equals(ruleEntry.getValue().getRuleId())) {
+                        Wrapper wrapper = new Wrapper(getGroupKey(pay, ruleEntry.getValue()), pay);
                         out.collect(wrapper);
                     }
                 }
@@ -81,7 +83,7 @@ public class Risk {
             public String getKey(Wrapper wrapper) throws Exception {
                 return wrapper.getKey();
             }
-        }).connect(ruleStream).process(new KeyedBroadcastProcessFunction<String, Wrapper, Rule, Object>() {
+        }).connect(ruleStream).process(new KeyedBroadcastProcessFunction<String, Wrapper, Rule, Alert>() {
             // 存储广播状态
             MapStateDescriptor<Integer, Rule> ruleStateDescriptor = new MapStateDescriptor<>("RulesBroadcastState", Integer.class, Rule.class);
             // 存储风控业务数据
@@ -94,7 +96,7 @@ public class Risk {
             }
 
             @Override
-            public void processElement(Wrapper wrapper, ReadOnlyContext ctx, Collector<Object> out) throws Exception {
+            public void processElement(Wrapper wrapper, ReadOnlyContext ctx, Collector<Alert> out) throws Exception {
                 String groupKeyName = wrapper.getKey();
                 Pay pay = wrapper.getPay();
                 Rule rule = null;
@@ -106,62 +108,103 @@ public class Risk {
                 }
 
                 //  写到状态
-                String groupKey = groupKeyName + "_" + getWindowWidth(pay.getEventTime(),rule.getWindow());
-                putStatus(riskMap,groupKey,pay.getAmount());
+                putStatus(riskMap, groupKeyName, pay.getAmount());
 
+                System.out.println("groupKeyName："+groupKeyName+",time："+System.currentTimeMillis());
                 // 注册定时器
+                long time = System.currentTimeMillis() + 2000;
+                ctx.timerService().registerProcessingTimeTimer(time);
 
-                // 风控校验
-
-                // alert
+                /*// 风控校验
+                Alert alert = calculate(riskMap, rule, pay, groupKeyName);
+                if (alert != null) {
+                    out.collect(alert);
+                }*/
             }
 
             @Override
-            public void processBroadcastElement(Rule rule, Context ctx, Collector<Object> out) throws Exception {
+            public void processBroadcastElement(Rule rule, Context ctx, Collector<Alert> out) throws Exception {
                 BroadcastState<Integer, Rule> broadcastState = ctx.getBroadcastState(ruleStateDescriptor);
                 broadcastState.put(rule.getRuleId(), rule);
             }
 
             @Override
-            public void onTimer(long timestamp, OnTimerContext ctx, Collector<Object> out) throws Exception {
-                // 清空过期状态
+            public void onTimer(long timestamp, OnTimerContext ctx, Collector<Alert> out) throws Exception {
+                // 定时清空mapState里过期的kv
+                String groupkeyName = ctx.getCurrentKey();
+                Integer ruleId = Integer.parseInt(groupkeyName.split("##")[0]);
+                ReadOnlyBroadcastState<Integer, Rule> broadcastState = ctx.getBroadcastState(ruleStateDescriptor);
+                Rule rule = broadcastState.get(ruleId);
+                // 查出需要删除ts之前的风控数据
+                long ts = (System.currentTimeMillis() - 2000);
+                System.out.println("删除的数据："+groupkeyName+"，ts："+ts+"，当前时间："+System.currentTimeMillis());
+
             }
-        });
+        }).print();
     }
 
 
-    private static Properties kafkaProp() {
-        Properties prop = new Properties();
-        prop.put("bootstrap.servers", "localhost:9092");
-        prop.put("zookeeper.connect", "localhost:2181");
-        prop.put("group.id", "risk");
-        prop.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        prop.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        prop.put("auto.offset.reset", "latest");
-        return prop;
+    private static Alert calculate(MapState<String, List<Integer>> riskMap, Rule rule, Pay pay, String groupKey) {
+        String aggFunType = rule.getAggregateFunctionType();
+        Integer limit = rule.getLimit();
+        try {
+            List<Integer> list = riskMap.get(groupKey);
+            if (list == null || list.isEmpty()) {
+                return null;
+            }
+            if ("sum".equals(aggFunType)) {
+                int total = 0;
+                for (Integer value : list) {
+                    total += value;
+                }
+                if (total > limit) {
+                    return new Alert(aggFunType, limit, total, groupKey);
+                }
+            } else if ("avg".equals(aggFunType)) {
+                int total = 0;
+                for (Integer value : list) {
+                    total += value;
+                }
+                int avg = total / list.size();
+                if (avg > limit) {
+                    return new Alert(aggFunType, limit, avg, groupKey);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    private static String getGroupKey(Pay pay, String groupKeyName) {
+
+    // 拼接groupKeyName，格式ruleId##fied1_filed2
+    private static String getGroupKey(Pay pay, Rule rule) {
+        String groupKeyName = rule.getGroupKeyName();
+        Integer ruleId = rule.getRuleId();
+
         String[] groupKeyNames = groupKeyName.split("_");
-        String key = "";
+        StringBuffer key = new StringBuffer();
+        key.append(ruleId).append("##");
         for (String keyName : groupKeyNames) {
             if ("fromUid".equals(keyName)) {
-                key = key + pay.getFromUid();
+                key.append(pay.getFromUid());
             }
             if ("toUid".equals(keyName)) {
-                key = key + pay.getToUid();
+                key.append(pay.getToUid());
             }
-            key = key + "_";
+            key.append("_");
         }
-        return key;
+        // 删除最后的_
+        key.deleteCharAt(key.lastIndexOf("_"));
+        return key.toString();
     }
 
-    private static String getWindowWidth(long eventTime,long window){
+    private static String getWindowWidth(long eventTime, long window) {
         String pattern = "yyyy-MM-dd:HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         String windowEnd = sdf.format(new Date(eventTime));
         String windowStart = sdf.format(new Date(eventTime - window * 1000));
-        return windowStart+"_"+windowEnd;
+        return windowStart + "_" + windowEnd;
     }
 
     private static void putStatus(MapState<String, List<Integer>> riskMap, String groupKey, Integer value) {
@@ -176,12 +219,25 @@ public class Risk {
             }
             riskMap.put(groupKey, list);
             for (Map.Entry<String, List<Integer>> entry : riskMap.entries()) {
-                System.out.println("key = " + entry.getKey() + ",value = " + entry.getValue());
+                //     System.out.println("key = " + entry.getKey() + ",value = " + entry.getValue());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+    private static Properties kafkaProp() {
+        Properties prop = new Properties();
+        prop.put("bootstrap.servers", "localhost:9092");
+        prop.put("zookeeper.connect", "localhost:2181");
+        prop.put("group.id", "risk");
+        prop.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        prop.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        prop.put("auto.offset.reset", "latest");
+        return prop;
+    }
+
 
 }
 
