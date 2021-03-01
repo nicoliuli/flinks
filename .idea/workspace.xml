@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c15e9b15-ae95-42da-a05c-efade5844482" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day01/Risk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day01/Risk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/kafka/KafkaProducerDemo4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/kafka/KafkaProducerDemo4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day08/MetricDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day08/MetricDemo.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +84,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Risk">
+  <component name="RunManager" selected="Application.MetricDemo">
     <configuration name="BroadcastStateDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day03.BroadcastStateDemo" />
@@ -140,6 +140,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MetricDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day08.MetricDemo" />
+      <module name="com.wb.flink" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wb.day08.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Risk" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day01.Risk" />
@@ -168,36 +182,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WordCountDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day01.WordCountDemo" />
-      <module name="com.wb.flink" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wb.day01.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.TableApiDemo2" />
       <item itemvalue="Application.LiveStreamRealtimeMetricProdProcessorJob" />
-      <item itemvalue="Application.WordCountDemo" />
       <item itemvalue="Application.BroadcastStateDemo" />
       <item itemvalue="Application.Risk" />
       <item itemvalue="Application.KafkaProducerDemo4" />
       <item itemvalue="Application.MapStateDemo" />
+      <item itemvalue="Application.MetricDemo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MetricDemo" />
         <item itemvalue="Application.KafkaProducerDemo4" />
         <item itemvalue="Application.Risk" />
         <item itemvalue="Application.MapStateDemo" />
         <item itemvalue="Application.BroadcastStateDemo" />
-        <item itemvalue="Application.WordCountDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -245,8 +245,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wb/day08/MetricDemo.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="6" />
+          <line>63</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
