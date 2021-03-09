@@ -4,7 +4,8 @@
     <list default="true" id="c15e9b15-ae95-42da-a05c-efade5844482" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day08/MetricDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day08/MetricDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day02/KafkaDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day02/KafkaDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wb/day05/StateBackendDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wb/day05/StateBackendDemo.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,14 +85,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MetricDemo">
-    <configuration name="BroadcastStateDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day03.BroadcastStateDemo" />
+  <component name="RunManager" selected="Application.KafkaProducerDemo5">
+    <configuration name="KafkaProducerDemo4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wb.kafka.KafkaProducerDemo4" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wb.day03.*" />
+          <option name="PATTERN" value="com.wb.kafka.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,8 +99,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KafkaProducerDemo4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wb.kafka.KafkaProducerDemo4" />
+    <configuration name="KafkaProducerDemo5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wb.kafka.KafkaProducerDemo5" />
       <module name="com.wb.flink" />
       <extension name="coverage">
         <pattern>
@@ -119,20 +119,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.wb.day01.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MapStateDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.wb.day05.MapStateDemo" />
-      <module name="com.wb.flink" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wb.day05.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -168,6 +154,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StateBackendDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.wb.day05.StateBackendDemo" />
+      <module name="com.wb.flink" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wb.day05.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TableApiDemo2" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.wb.day04.demo01.TableApiDemo2" />
@@ -185,19 +185,19 @@
     <list>
       <item itemvalue="Application.TableApiDemo2" />
       <item itemvalue="Application.LiveStreamRealtimeMetricProdProcessorJob" />
-      <item itemvalue="Application.BroadcastStateDemo" />
       <item itemvalue="Application.Risk" />
       <item itemvalue="Application.KafkaProducerDemo4" />
-      <item itemvalue="Application.MapStateDemo" />
       <item itemvalue="Application.MetricDemo" />
+      <item itemvalue="Application.StateBackendDemo" />
+      <item itemvalue="Application.KafkaProducerDemo5" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.KafkaProducerDemo5" />
+        <item itemvalue="Application.StateBackendDemo" />
         <item itemvalue="Application.MetricDemo" />
         <item itemvalue="Application.KafkaProducerDemo4" />
         <item itemvalue="Application.Risk" />
-        <item itemvalue="Application.MapStateDemo" />
-        <item itemvalue="Application.BroadcastStateDemo" />
       </list>
     </recent_temporary>
   </component>

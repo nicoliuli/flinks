@@ -17,10 +17,13 @@ public class StateBackendDemo {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
         // checkpoint时间
-        env.enableCheckpointing(1000);
+        env.enableCheckpointing(2000);
         env.getCheckpointConfig().enableExternalizedCheckpoints(CheckpointConfig.ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION);
         // 设置状态后端
-        env.setStateBackend(new FsStateBackend("file:///Users/liuli/Desktop/aaa"));
+        env.setStateBackend(new FsStateBackend("hdfs://localhost:9000/flinkcp/demo1"));
+
+        // 配置重启策略,默认无限重启
+     //   env.setRestartStrategy(RestartStrategies.noRestart()); 不重启
 
         fromSocket(env);
         env.execute("Flink Streaming Java API Skeleton");
@@ -30,6 +33,9 @@ public class StateBackendDemo {
         env.socketTextStream("localhost", 8888).map(new MapFunction<String, Sensor>() {
             @Override
             public Sensor map(String value) throws Exception {
+                if(value.equals("bug")){
+                    throw new Exception("bug");
+                }
                 return new Sensor("deviceId1", Integer.parseInt(value), System.currentTimeMillis());
             }
         }).keyBy("deviceId").process(new MyKeyedProcessFunction()).print();

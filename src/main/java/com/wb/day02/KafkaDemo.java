@@ -40,7 +40,9 @@ public class KafkaDemo {
         env.enableCheckpointing(10000);
 
 
-        DataStreamSource<String> dataStreamSource = env.addSource(new FlinkKafkaConsumer011<String>("test", new SimpleStringSchema(), kafkaProp()));
+        FlinkKafkaConsumer011<String> kafkaSource = new FlinkKafkaConsumer011<>("test", new SimpleStringSchema(), kafkaProp());
+        kafkaSource.setCommitOffsetsOnCheckpoints(true); // 做checkpoint的时候自动提交位移
+        DataStreamSource<String> dataStreamSource = env.addSource(kafkaSource);
 
         SingleOutputStreamOperator<SourceModel> stream = dataStreamSource.map(new MapFunction<String, SourceModel>() {
             @Override
