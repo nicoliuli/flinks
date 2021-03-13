@@ -1,17 +1,14 @@
 package com.wb.kafka;
 
 import com.alibaba.fastjson.JSON;
-import com.wb.common.UserBehavior;
+import com.wb.common.TestModel;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Properties;
-import java.util.Random;
 
-public class KafkaProducerDemo5 {
+public class KafkaProducerDemo6 {
 
     public static void main(String[] args) throws Exception {
         Properties properties = new Properties();
@@ -29,17 +26,11 @@ public class KafkaProducerDemo5 {
 
         try {
             producer = new KafkaProducer<String, String>(properties);
-            // flink1.12.0的格式，对应于flinksql中的TIMESTAMP(3)类型
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             while (true){
-                UserBehavior userBehavior = new UserBehavior();
-                userBehavior.setUser_id(Long.parseLong(new Random().nextInt(200)+""));
-                userBehavior.setCategory_id(Long.parseLong(new Random().nextInt(50)+""));
-                userBehavior.setTs(simpleDateFormat.format(new Date()));
-                userBehavior.setBehavior(new Random().nextBoolean()?"buy":"order");
-                userBehavior.setItem_id(Long.parseLong(new Random().nextInt(200)+""));
-                producer.send(new ProducerRecord<String, String>("user_behavior4", JSON.toJSONString(userBehavior)));
-                Thread.sleep(200);
+                TestModel t = new TestModel();
+              //  t.setT_id(new Random().nextInt(20));
+                producer.send(new ProducerRecord<String, String>("test_join", JSON.toJSONString(t)));
+                Thread.sleep(500);
             }
 
 

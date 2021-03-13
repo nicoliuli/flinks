@@ -172,10 +172,11 @@ under the License.
 		</dependency>
 
 
+		<!--
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-jdbc_2.11</artifactId>
-			<version>1.10.2</version>
+			<version>1.10.0</version>
 		</dependency>
 
 
@@ -188,16 +189,37 @@ under the License.
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-sql-connector-elasticsearch7_2.11</artifactId>
-			<version>1.12.0</version>
+			<version>1.10.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-sql-connector-kafka_2.11</artifactId>
+			<version>1.10.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-json</artifactId>
+			<version>1.10.0</version>
+		</dependency>
+		-->
+
+		<!--<dependency>
+			<groupId>com.alibaba.ververica</groupId>
+			<artifactId>flink-connector-mysql-cdc</artifactId>
+			<version>1.2.0</version>
+		</dependency>-->
+
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-connector-kafka_2.11</artifactId>
 			<version>1.12.0</version>
 		</dependency>
-
-
+		<dependency>
+			<groupId>com.alibaba.ververica</groupId>
+			<artifactId>flink-format-changelog-json</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 
 	</dependencies>

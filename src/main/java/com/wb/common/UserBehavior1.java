@@ -1,11 +1,14 @@
 package com.wb.common;
 
-public class UserBehavior {
+public class UserBehavior1 {
     private Long user_id;
     private Long item_id;
     private Long category_id;
     private String behavior;
-    private String ts;
+    /**
+     * 事件时间
+     */
+    private Long ts;
 
 
     public Long getUser_id() {
@@ -42,18 +45,18 @@ public class UserBehavior {
 
 
 
-    public UserBehavior() {
+    public UserBehavior1() {
     }
 
-    public String getTs() {
+    public Long getTs() {
         return ts;
     }
 
-    public void setTs(String ts) {
+    public void setTs(Long ts) {
         this.ts = ts;
     }
 
-    public UserBehavior(Long user_id, Long item_id, Long category_id, String behavior, String ts) {
+    public UserBehavior1(Long user_id, Long item_id, Long category_id, String behavior, Long ts) {
         this.user_id = user_id;
         this.item_id = item_id;
         this.category_id = category_id;
