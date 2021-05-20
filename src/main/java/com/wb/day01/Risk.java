@@ -28,7 +28,7 @@ public class Risk {
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setParallelism(1);
+        env.setParallelism(16);
         logic(env);
         env.execute("job");
     }
@@ -110,16 +110,16 @@ public class Risk {
                 //  写到状态
                 putStatus(riskMap, groupKeyName, pay.getAmount());
 
-                System.out.println("groupKeyName："+groupKeyName+",time："+System.currentTimeMillis());
+          //      System.out.println("groupKeyName："+groupKeyName+",time："+System.currentTimeMillis());
                 // 注册定时器
                 long time = System.currentTimeMillis() + 2000;
                 ctx.timerService().registerProcessingTimeTimer(time);
 
-                /*// 风控校验
+                // 风控校验
                 Alert alert = calculate(riskMap, rule, pay, groupKeyName);
                 if (alert != null) {
                     out.collect(alert);
-                }*/
+                }
             }
 
             @Override
@@ -137,7 +137,7 @@ public class Risk {
                 Rule rule = broadcastState.get(ruleId);
                 // 查出需要删除ts之前的风控数据
                 long ts = (System.currentTimeMillis() - 2000);
-                System.out.println("删除的数据："+groupkeyName+"，ts："+ts+"，当前时间："+System.currentTimeMillis());
+          //      System.out.println("删除的数据："+groupkeyName+"，ts："+ts+"，当前时间："+System.currentTimeMillis());
 
             }
         }).print();

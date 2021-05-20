@@ -1,5 +1,6 @@
 package com.wb.day01;
 
+import com.wb.common.WordCount;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.api.java.functions.KeySelector;
@@ -12,13 +13,37 @@ import org.apache.flink.util.Collector;
  */
 public class WordCountDemo {
 
-
     public static void main(String[] args) throws Exception {
-
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        // 设置并行度
         env.setParallelism(8);
-        testWordCount1(env);
-        env.execute("Flink Streaming Java API Skeleton");
+        wordCountProcess(env);
+        env.execute("Word Count Job Exec");
+    }
+
+    // nc -lk 8888命令开启网络输入
+    public static void wordCountProcess(StreamExecutionEnvironment env) throws Exception {
+        env.socketTextStream("localhost", 8888).flatMap(new FlatMapFunction<String, WordCount>() {
+            @Override
+            public void flatMap(String value, Collector<WordCount> out) throws Exception {
+                for (String word : value.split(" ")) {
+                    out.collect(new WordCount(word,1));
+                }
+            }
+        }).keyBy(new KeySelector<WordCount, String>() {
+            @Override
+            public String getKey(WordCount wc) throws Exception {
+                return wc.getWord(); // word字段为分组字段
+            }
+        }).reduce(new ReduceFunction<WordCount>() {
+            @Override
+            public WordCount reduce(WordCount wc1, WordCount wc2) throws Exception {
+                WordCount wc = new WordCount();
+                wc.setWord(wc1.getWord());
+                wc.setCount(wc1.getCount()+wc2.getCount());
+                return wc;
+            }
+        }).print();
     }
 
     // nc -lk 8888命令开启网络输入
@@ -39,7 +64,6 @@ public class WordCountDemo {
                 return t;
             }
         }).print();
-
     }
 
     // nc -lk 8888命令开启网络输入
